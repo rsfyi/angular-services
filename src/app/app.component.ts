@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PeopleService } from './people/people.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'di-demo';
+  people;
+
+  constructor() {
+    // if people service have any dependencies - we will pass it here in constructor
+    const ps = new PeopleService();
+    this.people = ps.getPeople();
+  }
 }
